@@ -80,4 +80,21 @@ class ProdukController extends Controller
         // Redirect kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Produk berhasil diperbarui');
     }
+
+    public function destroy($id)
+    {
+        // Temukan produk berdasarkan ID
+        $produk = Produk::find($id);
+
+        // Jika produk tidak ditemukan, kembalikan error 404
+        if (!$produk) {
+            return abort(404);
+        }
+
+        // Hapus produk
+        $produk->delete();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Produk berhasil dihapus');
+    }
 }

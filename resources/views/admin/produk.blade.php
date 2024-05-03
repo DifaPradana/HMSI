@@ -188,7 +188,7 @@
                                             <td>
                                                 <button type="button" class="btn icon btn-primary"
                                                     data-bs-toggle="modal"data-bs-toggle="modal"
-                                                    data-bs-target="#inlineForm"{{ $produk->id_produk }}>
+                                                    data-bs-target="#inlineForm{{ $produk->id_produk }}">
                                                     <i class="bi bi-pencil" name="edit"></i>
                                                 </button>
                                                 <div class="modal fade text-left modal-borderless" id="editModal"
@@ -201,7 +201,8 @@
                                                     <i class="bi bi-trash" name="delete"></i>
                                                 </button>
 
-                                                <div class="modal fade text-left" id="inlineForm" tabindex="-1"
+                                                <div class="modal fade text-left"
+                                                    id="inlineForm{{ $produk->id_produk }}" tabindex="-1"
                                                     role="dialog" aria-labelledby="myModalLabel33"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
