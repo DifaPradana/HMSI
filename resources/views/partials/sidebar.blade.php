@@ -73,6 +73,20 @@
                     </ul>
                 </li>
 
+                <li class="sidebar-item ">
+                    <a href="{{ route('produk') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Produk</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item ">
+                    <a href="{{ route('pembelian') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Pembelian</span>
+                    </a>
+                </li>
+
                 {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
@@ -366,7 +380,7 @@
 
                 </li> --}}
 
-                <li class="sidebar-item  has-sub">
+                {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Datatables</span>
@@ -376,7 +390,7 @@
                             <a href="table-datatable.html" class="submenu-link">Datatable</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- <li class="sidebar-title">Extra UI</li>
 

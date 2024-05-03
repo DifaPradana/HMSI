@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +27,17 @@ Route::get('/user', function () {
 });
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+    Route::post('/produk', [ProdukController::class, 'create'])->name('produk.create');
+    Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
+
+    Route::get('/pembelian', function () {
+        return view('admin.pembelian');
+    })->name('pembelian');
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
