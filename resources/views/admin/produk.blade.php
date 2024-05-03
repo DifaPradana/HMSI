@@ -165,26 +165,26 @@
                             <table class="table" id="table2">
                                 <thead>
                                     <tr>
-                                        <th>ID Produk</th>
-                                        <th>Nama Produk</th>
-                                        <th>Deskripsi</th>
-                                        <th>Harga</th>
-                                        <th>Kategori</th>
-                                        <th>Berat(gram)</th>
-                                        <th>Stok</th>
-                                        <th>Action</th>
+                                        <th class="text-center">ID Produk</th>
+                                        <th class="text-center">Nama Produk</th>
+                                        <th class="text-center">Deskripsi</th>
+                                        <th class="text-center">Harga</th>
+                                        <th class="text-center">Kategori</th>
+                                        <th class="text-center">Berat(gram)</th>
+                                        <th class="text-center">Stok</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($produk as $produk)
                                         <tr>
-                                            <td>{{ $produk->id_produk }}</td>
-                                            <td>{{ $produk->nama_produk }}</td>
-                                            <td>{{ $produk->deskripsi_produk }}</td>
-                                            <td>{{ $produk->harga_produk }}</td>
-                                            <td>{{ $produk->kategori_produk }}</td>
-                                            <td>{{ $produk->berat_produk }}</td>
-                                            <td>{{ $produk->stok_produk }}</td>
+                                            <td class="text-center">{{ $produk->id_produk }}</td>
+                                            <td class="text-center">{{ $produk->nama_produk }}</td>
+                                            <td class="text-center">{{ $produk->deskripsi_produk }}</td>
+                                            <td class="text-center">{{ $produk->harga_produk }}</td>
+                                            <td class="text-center">{{ $produk->kategori_produk }}</td>
+                                            <td class="text-center">{{ $produk->berat_produk }}</td>
+                                            <td class="text-center">{{ $produk->stok_produk }}</td>
                                             <td>
                                                 <button type="button" class="btn icon btn-primary"
                                                     data-bs-toggle="modal"data-bs-toggle="modal"
@@ -197,7 +197,8 @@
                                                 </div>
 
                                                 <button type="button" class="btn icon btn-danger"
-                                                    data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#danger{{ $produk->id_produk }}">
                                                     <i class="bi bi-trash" name="delete"></i>
                                                 </button>
 
@@ -289,6 +290,52 @@
                                                                         class="btn btn-primary ms-1">Simpan</button>
                                                                 </div>
 
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Danger theme Modal -->
+                                                <div class="modal fade text-left" id="danger{{ $produk->id_produk }}"
+                                                    tabindex="-1" role="dialog" aria-labelledby="myModalLabel120"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                                        role="document">
+                                                        <div class="modal-content">
+                                                            <form
+                                                                action="{{ route('produk.destroy', $produk->id_produk) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')>
+                                                                <div class="modal-header bg-danger">
+                                                                    <h5 class="modal-title white"
+                                                                        id="myModalLabel120">
+                                                                        Apakah kamu yakin akan
+                                                                        menghapus data?
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-bs-dismiss="modal" aria-label="Close">
+                                                                        <i data-feather="x"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h2>Data {{ $produk->nama_produk }} akan dihapus
+                                                                        secara permanen!</h2>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-light-secondary"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Tutup</span>
+                                                                    </button>
+                                                                    <button type="submit" class="btn btn-danger ms-1"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Ya,
+                                                                            Hapus!!</span>
+                                                                    </button>
+                                                                </div>
                                                             </form>
                                                         </div>
                                                     </div>

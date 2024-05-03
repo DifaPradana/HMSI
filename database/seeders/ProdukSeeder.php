@@ -35,6 +35,36 @@ class ProdukSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'nama_produk' => 'Kamera Canon',
+                'deskripsi_produk' => 'Kamera Canon dengan lensa 50mm',
+                'harga_produk' => 12000000,
+                'kategori_produk' => 'elektronik',
+                'berat_produk' => 1,
+                'stok_produk' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama_produk' => 'Mechanical Keyboard',
+                'deskripsi_produk' => 'Click Click Cetak Cetak',
+                'harga_produk' => 12000000,
+                'kategori_produk' => 'komputer',
+                'berat_produk' => 2,
+                'stok_produk' => 50,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama_produk' => 'Mouse Gaming',
+                'deskripsi_produk' => 'Nice Clicks for Gaming',
+                'harga_produk' => 120000,
+                'kategori_produk' => 'komputer',
+                'berat_produk' => 1,
+                'stok_produk' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
             // Tambahkan data lain sesuai kebutuhan
         ]);
     }
