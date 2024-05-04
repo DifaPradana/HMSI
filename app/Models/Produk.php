@@ -9,6 +9,8 @@ class Produk extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id_produk'];
+
     protected $table = 'produk';
 
     protected $primaryKey = 'id_produk';
@@ -21,4 +23,9 @@ class Produk extends Model
         'berat_produk',
         'stok_produk',
     ];
+
+    public function pembelian()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
 }

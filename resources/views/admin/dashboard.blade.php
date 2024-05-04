@@ -2,6 +2,7 @@
 <html lang="en">
 
 @include('partials.header')
+<title>Dashboard</title>
 
 <body>
     <script src="assets/static/js/initTheme.js"></script>

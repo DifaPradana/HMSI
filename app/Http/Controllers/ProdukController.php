@@ -14,7 +14,7 @@ class ProdukController extends Controller
         return view('admin.produk', compact('produk'));
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nama_produk' => 'required',

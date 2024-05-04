@@ -43,7 +43,7 @@ class RegisteredAdminController extends Controller
             'email' => $request->email,
             'no_telepon' => $request->no_telepon,
             'password' => Hash::make($request->password),
-            'is_admin' => "True",
+            'is_admin' => true,
         ]);
 
         event(new Registered($user));

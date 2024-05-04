@@ -74,7 +74,7 @@
                 </li>
 
                 <li class="sidebar-item ">
-                    <a href="{{ route('produk') }}" class='sidebar-link'>
+                    <a href="{{ route('produk.index') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Produk</span>
                     </a>

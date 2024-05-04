@@ -2,6 +2,7 @@
 <html lang="en">
 
 @include('partials.header')
+<title>Pembelian</title>
 
 <body>
     <script src="assets/static/js/initTheme.js"></script>
@@ -34,6 +35,7 @@
                     </div>
                 </div>
                 {{-- Page Content --}}
+                <br>
 
                 <div class="page-heading">
                     <div class="page-title">

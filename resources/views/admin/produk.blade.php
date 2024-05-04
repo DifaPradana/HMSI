@@ -2,6 +2,7 @@
 <html lang="en">
 
 @include('partials.header')
+<title>Produk</title>
 
 <body>
     <script src="assets/static/js/initTheme.js"></script>
@@ -40,7 +41,7 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('produk.create') }}">
+                                <form method="POST" action="{{ route('produk.store') }}">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -158,7 +159,7 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Minimal jQuery Datatable</h5>
+                        <h5 class="card-title">Table Data</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive datatable-minimal">
