@@ -72,12 +72,21 @@
 
                     </ul>
                 </li>
-
-                <li class="sidebar-item ">
-                    <a href="{{ route('produk.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-file-person"></i>
                         <span>Produk</span>
                     </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="{{ route('produk.index') }}" class='submenu-link'>Daftar Produk
+                            </a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="{{ route('kategori-produk.index') }}" class='submenu-link'>Kategori Produk
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item ">

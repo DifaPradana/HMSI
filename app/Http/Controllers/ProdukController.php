@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriProduk;
 use App\Models\Produk; // Sesuaikan namespace dengan model Anda
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,8 +11,14 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        $produk = Produk::all();
-        return view('admin.produk', compact('produk'));
+        $data = array(
+            'title' => 'Data Produk',
+            'data_produk' => Produk::all(),
+            'data_kategori' => KategoriProduk::all(),
+
+        );
+
+        return view('admin.produk', $data);
     }
 
     public function store(Request $request)
@@ -20,7 +27,7 @@ class ProdukController extends Controller
             'nama_produk' => 'required',
             'deskripsi_produk' => 'required',
             'harga_produk' => 'required',
-            'kategori_produk' => 'required',
+            'id_kategori' => 'required',
             'berat_produk' => 'required',
             'stok_produk' => 'required',
         ]);
@@ -33,7 +40,7 @@ class ProdukController extends Controller
             'nama_produk' => $request->nama_produk,
             'deskripsi_produk' => $request->deskripsi_produk,
             'harga_produk' => $request->harga_produk,
-            'kategori_produk' => $request->kategori_produk,
+            'id_kategori' => $request->id_kategori,
             'berat_produk' => $request->berat_produk,
             'stok_produk' => $request->stok_produk,
 
@@ -58,7 +65,7 @@ class ProdukController extends Controller
             'nama_produk' => 'required',
             'deskripsi_produk' => 'required',
             'harga_produk' => 'required',
-            'kategori_produk' => 'required',
+            'id_kategori' => 'required',
             'berat_produk' => 'required',
             'stok_produk' => 'required',
         ]);
@@ -72,7 +79,7 @@ class ProdukController extends Controller
         $produk->nama_produk = $request->nama_produk;
         $produk->deskripsi_produk = $request->deskripsi_produk;
         $produk->harga_produk = $request->harga_produk;
-        $produk->kategori_produk = $request->kategori_produk;
+        $produk->id_kategori = $request->id_kategori;
         $produk->berat_produk = $request->berat_produk;
         $produk->stok_produk = $request->stok_produk;
         $produk->save();

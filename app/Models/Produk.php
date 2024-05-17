@@ -19,13 +19,22 @@ class Produk extends Model
         'nama_produk',
         'deskripsi_produk',
         'harga_produk',
-        'kategori_produk',
+        'id_kategori',
         'berat_produk',
         'stok_produk',
+    ];
+
+    protected $foreignKeys = [
+        'id_kategori' => 'id_kategori',
     ];
 
     public function pembelian()
     {
         return $this->hasMany(Pembelian::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriProduk::class, 'id_kategori');
     }
 }

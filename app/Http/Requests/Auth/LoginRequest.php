@@ -54,7 +54,7 @@ class LoginRequest extends FormRequest
         if ($user && $user->is_admin) {
             // Redirect to admin dashboard
             // You need to define your admin dashboard route
-            redirect()->route('dashboard')->send();
+            redirect()->route('dashboard');
         }
 
         RateLimiter::clear($this->throttleKey());

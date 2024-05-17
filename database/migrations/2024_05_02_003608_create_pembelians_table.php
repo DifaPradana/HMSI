@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pembelian', function (Blueprint $table) {
             $table->id('id_pembelian');
             $table->date('waktu_pembelian');
-            $table->integer('total_harga_pembelian');
-            $table->integer('total_berat');
+            $table->integer('total_harga_pembelian')->nullable(true);
+            $table->integer('total_berat')->nullable(true);
             $table->enum('status_pembelian', ['belum bayar', 'sudah bayar', 'sedang dikirim', 'selesai']);
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');

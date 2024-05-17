@@ -31,4 +31,7 @@
 <script src="{{ asset('assets/extensions/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('assets/static/js/pages/datatables.js') }}"></script>
+<script src="{{ asset('assets/static/js/pages/datatables.js') }}"></script>\
+
+<script src="{{ asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
+<script src="{{ asset('assets/static/js/pages/toastify.js') }}"></script>

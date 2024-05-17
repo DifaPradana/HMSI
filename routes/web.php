@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'verified', 'admin.only'])->group(function () {
     })->name('pembelian');
 
     Route::resource('produk', ProdukController::class);
+    Route::resource('kategori-produk', KategoriProdukController::class);
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -90,12 +90,15 @@
                                                 <div class="form-group has-icon-left">
                                                     <label for="email-id-icon">Kategori Produk</label>
                                                     <div class="position-relative">
-                                                        <select type="number" class="form-control"
-                                                            name="kategori_produk" id="email-id-icon" value="">
+                                                        <select type="number" class="form-control" name="id_kategori"
+                                                            id="email-id-icon" value="">
                                                             <option disabled selected>Kategori Produk
+                                                                @foreach ($data_kategori as $data_kategori)
+                                                            <option value="{{ $data_kategori->id_kategori }}">
+                                                                {{ $data_kategori->nama_kategori }}
                                                             </option>
-                                                            <option value="elektronik">Elektronik</option>
-                                                            <option value="komputer">Komputer</option>
+                                                            @endforeach
+
                                                         </select>
                                                         <div class="form-control-icon">
                                                             <i class="icon dripicons dripicons-network-3"></i>
@@ -131,22 +134,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex items-center gap-4">
-                                        @if (session('success'))
-                                            <p x-data="{ show: true }" x-show="show" x-transition
-                                                x-init="setTimeout(() => show = false, 2000)"
-                                                class="text-sm text-gray-600 dark:text-gray-400">
-                                                {{ __('Produk berhasil ditambahkan.') }}
-                                            </p>
-                                        @endif
-                                        @if (session('error'))
-                                            <p x-data="{ show: true }" x-show="show" x-transition
-                                                x-init="setTimeout(() => show = false, 2000)"
-                                                class="text-sm text-gray-600 dark:text-gray-400">
-                                                {{ __('Eror anj.') }}
-                                            </p>
-                                        @endif
-                                    </div>
                                     <button type="submit" class="btn btn-primary me-1 mb-1"
                                         id="btnWtoast">Save</button>
                                 </form>
@@ -177,13 +164,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($produk as $produk)
+                                    @foreach ($data_produk as $produk)
                                         <tr>
                                             <td class="text-center">{{ $produk->id_produk }}</td>
                                             <td class="text-center">{{ $produk->nama_produk }}</td>
                                             <td class="text-center">{{ $produk->deskripsi_produk }}</td>
                                             <td class="text-center">{{ $produk->harga_produk }}</td>
-                                            <td class="text-center">{{ $produk->kategori_produk }}</td>
+                                            <td class="text-center">{{ $produk->kategori->nama_kategori }}</td>
                                             <td class="text-center">{{ $produk->berat_produk }}</td>
                                             <td class="text-center">{{ $produk->stok_produk }}</td>
                                             <td>
@@ -254,13 +241,13 @@
                                                                             id="kategori_produk" value="">
                                                                             <option disabled selected>Kategori Produk
                                                                             </option>
-                                                                            <option value="elektronik"
-                                                                                {{ $produk->kategori_produk == 'elektronik' ? 'selected' : '' }}>
-                                                                                Elektronik
-                                                                            </option>
-                                                                            <option value="komputer"
-                                                                                {{ $produk->kategori_produk == 'komputer' ? 'selected' : '' }}>
-                                                                                Komputer</option>
+                                                                            @foreach ($data_produk as $produk)
+                                                                                <option
+                                                                                    value="{{ $produk->kategori->nama_kategori }}"
+                                                                                    @if ($produk->kategori->nama_kategori == $produk->kategori->nama_kategori) selected @endif>
+                                                                                    {{ $produk->kategori->nama_kategori }}
+                                                                                </option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                     <label for="nama_produk">Berat Produk (berat):
@@ -388,6 +375,22 @@
     </div>
 
     @include('partials.script')
+    @if (session('success'))
+        <script>
+            const message = "{{ session('success') }}";
+            document.addEventListener('DOMContentLoaded', function() {
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+            });
+        </script>
+    @endif
+
 
 </body>
 

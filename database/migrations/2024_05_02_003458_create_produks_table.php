@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('deskripsi_produk');
             $table->integer('harga_produk');
-            $table->enum('kategori_produk', ['elektronik', 'komputer']);
+            $table->unsignedBigInteger('id_kategori');
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategori_produk')->onDelete('cascade');
             $table->integer('berat_produk');
             $table->integer('stok_produk');
             $table->timestamps();
