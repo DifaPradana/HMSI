@@ -7,7 +7,7 @@
 <body>
     <script src="assets/static/js/initTheme.js"></script>
     <div id="app">
-        @include('partials.sidebar')
+        @include('partials.sidebar', ['active' => 'produk'])
         <div id="main">
             @include('partials.topbar')
 
@@ -93,9 +93,9 @@
                                                         <select type="number" class="form-control" name="id_kategori"
                                                             id="email-id-icon" value="">
                                                             <option disabled selected>Kategori Produk
-                                                                @foreach ($data_kategori as $data_kategori)
-                                                            <option value="{{ $data_kategori->id_kategori }}">
-                                                                {{ $data_kategori->nama_kategori }}
+                                                                @foreach ($data_kategori as $d)
+                                                            <option value="{{ $d->id_kategori }}">
+                                                                {{ $d->nama_kategori }}
                                                             </option>
                                                             @endforeach
 
@@ -141,6 +141,7 @@
                         </div>
                     </div>
                 </div>
+
             </section>
 
             <section class="section">
@@ -169,7 +170,7 @@
                                             <td class="text-center">{{ $produk->id_produk }}</td>
                                             <td class="text-center">{{ $produk->nama_produk }}</td>
                                             <td class="text-center">{{ $produk->deskripsi_produk }}</td>
-                                            <td class="text-center">{{ $produk->harga_produk }}</td>
+                                            <td class="text-center">Rp.{{ $produk->harga_produk }}</td>
                                             <td class="text-center">{{ $produk->kategori->nama_kategori }}</td>
                                             <td class="text-center">{{ $produk->berat_produk }}</td>
                                             <td class="text-center">{{ $produk->stok_produk }}</td>
@@ -189,6 +190,8 @@
                                                     data-bs-target="#danger{{ $produk->id_produk }}">
                                                     <i class="bi bi-trash" name="delete"></i>
                                                 </button>
+
+                                                {{-- @dd($data_produk[0]->kategori->nama_kategori) --}}
 
                                                 <div class="modal fade text-left"
                                                     id="inlineForm{{ $produk->id_produk }}" tabindex="-1"
@@ -238,17 +241,18 @@
                                                                     <div class="form-group">
                                                                         <select type="number" class="form-control"
                                                                             name="kategori_produk"
-                                                                            id="kategori_produk" value="">
+                                                                            id="kategori_produk">
                                                                             <option disabled selected>Kategori Produk
                                                                             </option>
-                                                                            @foreach ($data_produk as $produk)
+                                                                            @foreach ($data_kategori as $s)
                                                                                 <option
-                                                                                    value="{{ $produk->kategori->nama_kategori }}"
-                                                                                    @if ($produk->kategori->nama_kategori == $produk->kategori->nama_kategori) selected @endif>
-                                                                                    {{ $produk->kategori->nama_kategori }}
+                                                                                    value="{{ $s->nama_kategori }}"
+                                                                                    <?= $s->id_kategori == $produk->id_kategori ? 'selected' : '' ?>>
+                                                                                    {{ $s->nama_kategori }}
                                                                                 </option>
                                                                             @endforeach
                                                                         </select>
+
                                                                     </div>
                                                                     <label for="nama_produk">Berat Produk (berat):
                                                                     </label>

@@ -7,7 +7,7 @@
 <body>
     <script src="assets/static/js/initTheme.js"></script>
     <div id="app">
-        @include('partials.sidebar')
+        @include('partials.sidebar', ['active' => 'dashboard'])
         <div id="main">
             @include('partials.topbar')
 

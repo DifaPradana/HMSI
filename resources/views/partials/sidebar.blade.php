@@ -45,7 +45,7 @@
                 <h3>Halo {{ Auth::user()->name }}!</h3>
                 {{-- <li class="sidebar-item" style="border-top: 1px solid #ccc; margin: 10px 0;"></li> --}}
                 <li class="sidebar-title">Menu</li>
-                <li class="sidebar-item ">
+                <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -53,18 +53,18 @@
 
 
                 </li>
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-person"></i>
                         <span>Profile Settings</span>
                     </a>
                     <ul class="submenu ">
-                        <li class="submenu-item  ">
+                        <li class="submenu-item {{ $active == 'profile' ? 'active' : '' }}">
                             <a href="{{ route('profile.edit') }}" class="submenu-link">Profile</a>
                         </li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <li class="submenu-item">
+                            <li class="submenu-item {{ $active == 'logout' ? 'active' : '' }}">
                                 <a href="table-datatable.html" class="submenu-link"
                                     onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
                             </li>
@@ -74,24 +74,24 @@
                 </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-person"></i>
+                        <i class="bi bi-box-seam"></i>
                         <span>Produk</span>
                     </a>
                     <ul class="submenu ">
-                        <li class="submenu-item ">
+                        <li class="submenu-item {{ $active == 'daftar' ? 'active' : '' }}">
                             <a href="{{ route('produk.index') }}" class='submenu-link'>Daftar Produk
                             </a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item {{ $active == 'kategori' ? 'active' : '' }}">
                             <a href="{{ route('kategori-produk.index') }}" class='submenu-link'>Kategori Produk
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item ">
+                <li class="sidebar-item {{ $active == 'pembelian' ? 'active' : '' }}">
                     <a href="{{ route('pembelian') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-bag-plus"></i>
                         <span>Pembelian</span>
                     </a>
                 </li>
